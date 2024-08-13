@@ -1,4 +1,7 @@
 package model.entities;
+
+import java.util.Objects;
+
 public class cliente {
 
     private int id_cliente;
@@ -6,6 +9,10 @@ public class cliente {
     private String email;
     private String endereco;
     private String telefone;
+
+    public cliente(){
+
+    }
 
 
     public int getId_cliente() {
@@ -46,5 +53,29 @@ public class cliente {
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
+    }
+
+    @Override
+    public String toString() {
+        return "cliente{" +
+                "id_cliente=" + id_cliente +
+                ", nome='" + nome + '\'' +
+                ", email='" + email + '\'' +
+                ", endereco='" + endereco + '\'' +
+                ", telefone='" + telefone + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        cliente cliente = (cliente) o;
+        return id_cliente == cliente.id_cliente && Objects.equals(nome, cliente.nome) && Objects.equals(email, cliente.email) && Objects.equals(endereco, cliente.endereco) && Objects.equals(telefone, cliente.telefone);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id_cliente, nome, email, endereco, telefone);
     }
 }

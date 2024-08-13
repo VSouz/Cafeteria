@@ -1,8 +1,7 @@
 package model;
 
-import model.dao.impl.produtoDAO;
-
-import model.entities.produto;
+import model.dao.impl.DAOfactory;
+import model.entities.cliente;
 //import javafx.application.Application;
 //import javafx.fxml.FXMLLoader;
 //import javafx.scene.Parent;
@@ -20,25 +19,37 @@ public class Main {
 //    }
     public static void main(String[] args) {
 
-//        cliente pessoa = new cliente();
+        // PROCURAR POR ID
+//        cliente a = DAOfactory.createClienteDao().procurarCliente(12);
+//        System.out.println(a.toString());
+
+
+        // PROCURAR TODOS
+        /*List<Departamento> lista = new ArrayList<>();
+        lista = DaoFactory.createDepartamentoDao().procurarTodos();
+        System.out.println(lista.toString());*/
+
+        // INSERT
+//        cliente c = new cliente();
+//        c.setId_cliente(12);
+//        c.setNome("Ana");
+//        c.setEmail("ana@gmail.com");
+//        c.setEndereco("Rua 5");
+//        c.setTelefone("23232341");
 //
-//        pessoa.setId_cliente(36);
-//        pessoa.setNome("carlim");
-//        pessoa.setEmail("carlim@gmail.com");
-//        pessoa.setEndereco("saopaulo");
-//        pessoa.setTelefone("9823984");
+//        DAOfactory.createClienteDao().cadastrarCliente(c);
+
+        //UPDATE
+//        cliente d = new cliente();
+//        d.setNome("Carlim Pro");
+//        d.setEmail("carlim@gmail.com");
+//        d.setEndereco("Rua 3");
+//        d.setTelefone("2332212");
 //
-//        new clienteDAO().cadastrarCliente(pessoa);
+//        DAOfactory.createClienteDao().atualizarCliente(36,d);
+//
+//        // DELETE
+//        DAOfactory.createClienteDao().removerCliente(12);
 
-        produto cerveja = new produto();
-        cerveja.setId_produto(2);
-        cerveja.setNome("cerveja");
-        cerveja.setPreco(12.50F);
-        cerveja.setQtd_estoque("3");
-
-        new produtoDAO().cadastrarProduto(cerveja);
-
-//        launch(args);
     }
-
 }

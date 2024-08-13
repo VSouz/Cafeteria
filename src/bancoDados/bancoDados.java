@@ -1,31 +1,50 @@
 package bancoDados;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 
-public class bancoDados{
+public class bancoDados {
 
-    private static final String url = "jdbc:mysql://localhost:3306/cafeteria";
-    private static final String user  = "root";
-    private static  final  String password = "padrao1234";
+    private static Connection conn = null;
 
-    private static Connection conn;
+    public static Connection getConnection(){
+        if(conn==null){
+            try {
+                conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/cafeteria","root","padrao1234");
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return conn;
+    }
 
-    public static  Connection getbancoDados(){
-
-    try{
-
-        if (conn == null){
-            conn = DriverManager.getConnection(url,user,password);
-             return conn;}
-         else {
-             return conn;
-         }}
-
-    catch (SQLException e) {
-        e.printStackTrace();
-        return null;
+    public static void closedConnection(){
+        if(conn!=null){
+            try{
+                conn.close();
+            } catch (SQLException e){
+                throw new RuntimeException(e);
+            }
         }
     }
+
+    public static void closeResultSet(ResultSet rs){
+        if(rs!=null){
+            try {
+                rs.close();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
+    public static void closedStatement(Statement st){
+        if(st!=null){
+            try {
+                st.close();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
 }
