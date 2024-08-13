@@ -1,5 +1,7 @@
 package model.entities;
 
+import model.dao.ProdutoDao;
+
 import java.util.Objects;
 
 public class produto {
@@ -9,7 +11,7 @@ public class produto {
 
     private float preco;
 
-    private String qtd_estoque;
+    private int qtd_estoque;
 
     public int getId_produto() {
         return id_produto;
@@ -35,11 +37,11 @@ public class produto {
         this.preco = preco;
     }
 
-    public String getQtd_estoque() {
+    public int getQtd_estoque() {
         return qtd_estoque;
     }
 
-    public void setQtd_estoque(String qtd_estoque) {
+    public void setQtd_estoque(int qtd_estoque) {
         this.qtd_estoque = qtd_estoque;
     }
 

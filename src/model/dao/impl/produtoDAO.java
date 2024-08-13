@@ -1,31 +1,55 @@
 package model.dao.impl;
 
 import bancoDados.bancoDados;
+import model.dao.ProdutoDao;
 import model.entities.produto;
 
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
-public class produtoDAO {
+public class produtoDAO implements ProdutoDao {
 
-//    public void cadastrarProduto(produto produto) {
-//        String sql = "INSERT INTO produto (id_produto,nome, preco, qtd_estoque) VALUES (?,?,?,?)";
-//
-//        PreparedStatement ps = null;
-//
-//        try {
-//            ps = bancoDados.getbancoDados().prepareStatement(sql);
-//            ps.setInt(1, produto.getId_produto());
-//            ps.setString(2, produto.getNome());
-//            ps.setFloat(3, produto.getPreco());
-//            ps.setString(4, produto.getQtd_estoque());
-//
-//            ps.execute();
-//            ps.close();
-//
-//        } catch (
-//                SQLException e) {
-//            e.printStackTrace();
-//        }
-//    }
+    private Connection conn;
+    public void cadastrarProduto(produto p) {
+            PreparedStatement st = null;
+        try {
+            st = conn.prepareStatement("insert into"+
+                            " produto(id_produto,nome,preco,qtd_estoque) values(?,?,?,?)",
+                    Statement.RETURN_GENERATED_KEYS);
+
+            st.setInt(1,p.getId_produto());
+            st.setString(2,p.getNome());
+            st.setDouble(3,p.getPreco());
+            st.setInt(4,p.getQtd_estoque());
+
+            int linha = st.executeUpdate();
+
+
+            if (linha > 0) {
+                ResultSet rs = st.getGeneratedKeys();
+                if(rs.next()){
+                    p.setId_produto(rs.getInt(1));
+                }
+                bancoDados.closeResultSet(rs);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }finally {
+            bancoDados.closedStatement(st);
+        }
+    }
+
+    @Override
+    public void procurarPorId(int id) {
+
+    }
+
+    @Override
+    public void removerProduto(int id) {
+
+    }
+
+    @Override
+    public void atualizarProduto(int id, produto p) {
+
+    }
 }
