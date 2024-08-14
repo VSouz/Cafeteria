@@ -69,7 +69,7 @@ public class clienteDAO implements ClienteDao{
         ResultSet rs = null;
 
         try {
-            st = conn.prepareStatement("select id_cliente, nome from cliente where id_cliente =?");
+            st = conn.prepareStatement("select id_cliente, nome, email, endereco, telefone from cliente where id_cliente =?");
             st.setInt(1,id);
             rs = st.executeQuery();
 
@@ -77,6 +77,9 @@ public class clienteDAO implements ClienteDao{
                 cliente c = new cliente();
                 c.setId_cliente(rs.getInt("id_cliente"));
                 c.setNome(rs.getString("nome"));
+                c.setEmail(rs.getString("email"));
+                c.setEndereco(rs.getString("endereco"));
+                c.setTelefone(rs.getString("telefone"));
                 return c;
             }
 
