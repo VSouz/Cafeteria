@@ -1,7 +1,5 @@
 package model.entities;
 
-import model.dao.ProdutoDao;
-
 import java.util.Objects;
 
 public class produto {

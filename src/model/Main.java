@@ -2,6 +2,7 @@ package model;
 
 import model.dao.impl.DAOfactory;
 import model.entities.cliente;
+import model.entities.produto;
 //import javafx.application.Application;
 //import javafx.fxml.FXMLLoader;
 //import javafx.scene.Parent;
@@ -22,6 +23,8 @@ public class Main {
         // PROCURAR POR ID
 //        cliente a = DAOfactory.createClienteDao().procurarCliente(12);
 //        System.out.println(a.toString());
+//        produto a = DAOfactory.createProdutoDao().procurarPorId(2);
+//        System.out.println(a.toString());
 
 
         // PROCURAR TODOS
@@ -39,6 +42,14 @@ public class Main {
 //
 //        DAOfactory.createClienteDao().cadastrarCliente(c);
 
+//        produto p = new produto();
+//        p.setId_produto(3);
+//        p.setNome("Café");
+//        p.setQtd_estoque(5);
+//        p.setPreco(3.5F);
+//
+//        DAOfactory.createProdutoDao().cadastrarProduto(p);
+
         //UPDATE
 //        cliente d = new cliente();
 //        d.setNome("Carlim Pro");
@@ -48,8 +59,16 @@ public class Main {
 //
 //        DAOfactory.createClienteDao().atualizarCliente(36,d);
 //
+//          produto d = new produto();
+//          d.setNome("Pão");
+//          d.setPreco(1f);
+//          d.setQtd_estoque(10);
+//
+//          DAOfactory.createProdutoDao().atualizarProduto(2,d);
 //        // DELETE
 //        DAOfactory.createClienteDao().removerCliente(12);
+
+//         DAOfactory.createProdutoDao().removerProduto(1);
 
     }
 }
