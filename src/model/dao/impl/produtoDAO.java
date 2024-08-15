@@ -49,7 +49,7 @@ public class produtoDAO implements ProdutoDao {
         ResultSet rs = null;
 
         try {
-            st = conn.prepareStatement("select id_produto, nome from produto where id_produto =?");
+            st = conn.prepareStatement("select id_produto, nome, preco, qtd_estoque from produto where id_produto =?");
             st.setInt(1,id);
             rs = st.executeQuery();
 
@@ -57,6 +57,8 @@ public class produtoDAO implements ProdutoDao {
                 produto p = new produto();
                 p.setId_produto(rs.getInt("id_produto"));
                 p.setNome(rs.getString("nome"));
+                p.setPreco(rs.getFloat("preco"));
+                p.setQtd_estoque(rs.getInt("qtd_estoque"));
                 return p;
             }
 

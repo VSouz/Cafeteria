@@ -236,31 +236,47 @@ public class Main {
         DAOfactory.createClienteDao().cadastrarCliente(c);
     }
     public static void removeCliente(int id){
-        DAOfactory.createClienteDao().removerCliente(id);
+        cliente c = new cliente();
+        c = DAOfactory.createClienteDao().procurarCliente(id);
+        if (c == null){
+            System.out.println("Cliente não encontrado!");
+        }else {
+            DAOfactory.createClienteDao().removerCliente(id);
+            System.out.println("Cliente Removido!");
+        }
     }
     public static void updateCliente(int id){
         Scanner scanSt = new Scanner(System.in);
         Scanner scanL = new Scanner(System.in);
         cliente c = new cliente();
-        String nome, telefone, end, email;
-        System.out.println("Digite novo Nome: ");
-        nome = scanL.nextLine();
-        c.setNome(nome);
-        System.out.println("Digite novo email: ");
-        email = scanSt.next();
-        c.setEmail(email);
-        System.out.println("Digite novo endereço: ");
-        end =scanL.nextLine();
-        c.setEndereco(end);
-        System.out.println("Digite novo telefone: ");
-        telefone = scanSt.next();
-        c.setTelefone(telefone);
-        DAOfactory.createClienteDao().atualizarCliente(id,c);
+        c = DAOfactory.createClienteDao().procurarCliente(id);
+        if (c == null){
+            System.out.println("Cliente não encontrado!");
+        }else{
+            String nome, telefone, end, email;
+            System.out.println("Digite novo Nome: ");
+            nome = scanL.nextLine();
+            c.setNome(nome);
+            System.out.println("Digite novo email: ");
+            email = scanSt.next();
+            c.setEmail(email);
+            System.out.println("Digite novo endereço: ");
+            end =scanL.nextLine();
+            c.setEndereco(end);
+            System.out.println("Digite novo telefone: ");
+            telefone = scanSt.next();
+            c.setTelefone(telefone);
+            DAOfactory.createClienteDao().atualizarCliente(id,c);
+        }
     }
     public static void searchCliente(int id){
         cliente procurado = new cliente();
         procurado = DAOfactory.createClienteDao().procurarCliente(id);
+        if (procurado == null){
+            System.out.println("Cliente não encontrado!");
+        }else{
         System.out.println(procurado.toString());
+        }
     }
 
     public static void addFuncio(){
@@ -329,30 +345,49 @@ public class Main {
 
     }
     public static void removeProduto(int id){
-        DAOfactory.createProdutoDao().removerProduto(id);
+
+        produto p = new produto();
+        p = DAOfactory.createProdutoDao().procurarPorId(id);
+
+        if (p == null){
+            System.out.println("Produto não encontrado!");
+        }else{
+            DAOfactory.createProdutoDao().removerProduto(id);
+            System.out.println("Produto Removido!");
+        }
     }
     public static void updateProduto(int id){
         Scanner scanNum = new Scanner(System.in);
         Scanner scanFlo = new Scanner(System.in);
         Scanner scanL = new Scanner(System.in);
         produto p = new produto();
-        String nome;
-        float preco;
-        int quant_est;
-        System.out.println("Digite novo Nome: ");
-        nome = scanL.nextLine();
-        p.setNome(nome);
-        System.out.println("Digite novo preço: ");
-        preco = scanFlo.nextFloat();
-        p.setPreco(preco);
-        System.out.println("Digite novo quantidade em estoque: ");
-        quant_est =scanNum.nextInt();
-        p.setQtd_estoque(quant_est);
-        DAOfactory.createProdutoDao().atualizarProduto(id,p);
+
+        p = DAOfactory.createProdutoDao().procurarPorId(id);
+        if (p == null){
+            System.out.println("Produto não encontrado!");
+        }else{
+            String nome;
+            float preco;
+            int quant_est;
+            System.out.println("Digite novo Nome: ");
+            nome = scanL.nextLine();
+            p.setNome(nome);
+            System.out.println("Digite novo preço: ");
+            preco = scanFlo.nextFloat();
+            p.setPreco(preco);
+            System.out.println("Digite novo quantidade em estoque: ");
+            quant_est =scanNum.nextInt();
+            p.setQtd_estoque(quant_est);
+            DAOfactory.createProdutoDao().atualizarProduto(id,p);
+        }
     }
     public static void searchProduto(int id){
         produto p = new produto();
         p = DAOfactory.createProdutoDao().procurarPorId(id);
+        if (p == null){
+            System.out.println("Produto não encontrado!");
+        }else{
         System.out.println(p.toString());
+        }
     }
 }
