@@ -1,5 +1,6 @@
 package model.entities;
 
+import java.sql.Blob;
 import java.util.Objects;
 
 public class produto {
@@ -10,6 +11,8 @@ public class produto {
     private float preco;
 
     private int qtd_estoque;
+
+    private Blob foto;
 
     public int getId_produto() {
         return id_produto;
@@ -41,6 +44,14 @@ public class produto {
 
     public void setQtd_estoque(int qtd_estoque) {
         this.qtd_estoque = qtd_estoque;
+    }
+
+    public Blob getFoto() {
+        return foto;
+    }
+
+    public void setFoto(Blob foto) {
+        this.foto = foto;
     }
 
     @Override

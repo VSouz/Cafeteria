@@ -92,7 +92,9 @@ public class Main {
     }
     public static void clienteMenu(){
         Scanner scanNum = new Scanner(System.in);
-        int op, id;
+        Scanner scanStr = new Scanner(System.in);
+        int op;
+        String id;
 
         do {
             System.out.println("escolha uma opção  ");
@@ -108,17 +110,17 @@ public class Main {
                     break;
                 case 2:
                     System.out.println("qual cliente remover? ");
-                    id = scanNum.nextInt();
+                    id = scanStr.next();
                     removeCliente(id);
                     break;
                 case 3:
                     System.out.println("qual cliente atualizar? ");
-                    id = scanNum.nextInt();
+                    id = scanStr.next();
                     updateCliente(id);
                     break;
                 case 4:
                     System.out.println("qual cliente procurar (digite ID)? ");
-                    id = scanNum.nextInt();
+                    id = scanStr.next();
                     searchCliente(id);
                     break;
                 case 0:
@@ -134,7 +136,9 @@ public class Main {
     }
     public static void funcionarioMenu(){
         Scanner scanNum = new Scanner(System.in);
+        Scanner scanStr = new Scanner(System.in);
         int op, id;
+        String cpf;
 
         do {
             System.out.println("escolha uma opção  ");
@@ -155,13 +159,13 @@ public class Main {
                     break;
                 case 3:
                     System.out.println("qual funcionario deseja atualizar? ");
-                    id = scanNum.nextInt();
-                    updateFuncio(id);
+                    cpf = scanStr.next();
+                    updateFuncio(cpf);
                     break;
                 case 4:
-                    System.out.println("qual funcionario procurar (digite ID)? ");
-                    id = scanNum.nextInt();
-                    searchFuncio(id);
+                    System.out.println("qual funcionario procurar (digite CPF)? ");
+                    cpf = scanStr.next();
+                    searchFuncio(cpf);
                     break;
                 case 0:
                     System.out.println("Saindo (/'-')/<3");
@@ -220,7 +224,10 @@ public class Main {
         Scanner scanSt = new Scanner(System.in);
         Scanner scanL = new Scanner(System.in);
         cliente c = new cliente();
-        String nome, telefone, end, email;
+        String cpf,nome, telefone, end, email;
+        System.out.println("Digite o Cpf: ");
+        cpf = scanL.nextLine();
+        c.setCpf(cpf);
         System.out.println("Digite Nome: ");
         nome = scanL.nextLine();
         c.setNome(nome);
@@ -235,21 +242,21 @@ public class Main {
         c.setTelefone(telefone);
         DAOfactory.createClienteDao().cadastrarCliente(c);
     }
-    public static void removeCliente(int id){
+    public static void removeCliente(String cpf){
         cliente c = new cliente();
-        c = DAOfactory.createClienteDao().procurarCliente(id);
+        c = DAOfactory.createClienteDao().procurarCliente(cpf);
         if (c == null){
             System.out.println("Cliente não encontrado!");
         }else {
-            DAOfactory.createClienteDao().removerCliente(id);
+            DAOfactory.createClienteDao().removerCliente(cpf);
             System.out.println("Cliente Removido!");
         }
     }
-    public static void updateCliente(int id){
+    public static void updateCliente(String cpf){
         Scanner scanSt = new Scanner(System.in);
         Scanner scanL = new Scanner(System.in);
         cliente c = new cliente();
-        c = DAOfactory.createClienteDao().procurarCliente(id);
+        c = DAOfactory.createClienteDao().procurarCliente(cpf);
         if (c == null){
             System.out.println("Cliente não encontrado!");
         }else{
@@ -266,12 +273,12 @@ public class Main {
             System.out.println("Digite novo telefone: ");
             telefone = scanSt.next();
             c.setTelefone(telefone);
-            DAOfactory.createClienteDao().atualizarCliente(id,c);
+            DAOfactory.createClienteDao().atualizarCliente(cpf,c);
         }
     }
-    public static void searchCliente(int id){
+    public static void searchCliente(String cpf){
         cliente procurado = new cliente();
-        procurado = DAOfactory.createClienteDao().procurarCliente(id);
+        procurado = DAOfactory.createClienteDao().procurarCliente(cpf);
         if (procurado == null){
             System.out.println("Cliente não encontrado!");
         }else{
@@ -283,45 +290,54 @@ public class Main {
         Scanner scanSt = new Scanner(System.in);
         Scanner scanL = new Scanner(System.in);
         funcionario f = new funcionario();
-        String nome, telefone, sexo, email;
+        String cpf,nome, telefone, cargo, email;
+        System.out.println("Digite o Cpf: ");
+        cpf = scanL.nextLine();
+        f.setCpf(cpf);
         System.out.println("Digite Nome: ");
         nome = scanL.nextLine();
         f.setNome(nome);
         System.out.println("Digite email: ");
         email = scanSt.next();
         f.setEmail(email);
-        System.out.println("Digite sexo: ");
-        sexo =scanL.next();
-        f.setSexo(sexo);
+        System.out.println("Digite cargo: ");
+        cargo =scanL.next();
+        f.setCargo(cargo);
         System.out.println("Digite telefone: ");
         telefone = scanSt.next();
         f.setTelefone(telefone);
-//        DAOfactory.createFuncionarioDao().cadastrarFuncionario(f);
+        DAOfactory.createFuncionarioDao().cadastrarFuncionario(f);
     }
     public static void removeFuncio(int id){
 //        DAOfactory.createFuncionarioDao().removerCliente(id);
     }
-    public static void updateFuncio(int id){
+    public static void updateFuncio(String cpf){
         Scanner scanSt = new Scanner(System.in);
         Scanner scanL = new Scanner(System.in);
         funcionario f = new funcionario();
-        String nome, telefone, sexo, email;
+        String nome, telefone, cargo, email;
         System.out.println("Digite novo Nome: ");
         nome = scanL.nextLine();
         f.setNome(nome);
         System.out.println("Digite novo email: ");
         email = scanSt.next();
         f.setEmail(email);
-        System.out.println("Digite novo sexo: ");
-        sexo =scanL.nextLine();
-        f.setSexo(sexo);
+        System.out.println("Digite novo cargo: ");
+        cargo =scanL.nextLine();
+        f.setCargo(cargo);
         System.out.println("Digite novo telefone: ");
         telefone = scanSt.next();
         f.setTelefone(telefone);
-//        DAOfactory.createFuncionarioDao().atualizarFuncionario(id, f);
+        DAOfactory.createFuncionarioDao().atualizarFuncionario(cpf, f);
     }
-    public static void searchFuncio(int id){
-//        DAOfactory.createFuncionarioDao().procurarFuncionario(id);
+    public static void searchFuncio(String cpf){
+        funcionario procurado = new funcionario();
+        procurado = DAOfactory.createFuncionarioDao().procurarFuncionario(cpf);
+        if (procurado == null){
+            System.out.println("Funcionario não encontrado!");
+        }else{
+            System.out.println(procurado.toString());
+        }
     }
 
     public static void addProduto(){
@@ -391,3 +407,4 @@ public class Main {
         }
     }
 }
+

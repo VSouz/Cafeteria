@@ -3,9 +3,9 @@ import model.entities.cliente;
 public interface ClienteDao {
     void cadastrarCliente(cliente c);
     void fazerPedido(cliente c);
-    void removerCliente(int id);
-    void atualizarCliente(int id, cliente c);
+    void removerCliente(String cpf);
+    void atualizarCliente(String cpf, cliente c);
     void verMenu();
-    cliente procurarCliente(int id);
+    cliente procurarCliente(String cpf);
 
 }

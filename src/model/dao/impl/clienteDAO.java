@@ -19,10 +19,10 @@ public class clienteDAO implements ClienteDao{
         PreparedStatement st = null;
         try {
             st = conn.prepareStatement("insert into"+
-                            " cliente(id_cliente,nome,email,endereco,telefone) values(?,?,?,?,?)",
+                            " cliente(cpf,nome,email,endereco,telefone) values(?,?,?,?,?)",
                     Statement.RETURN_GENERATED_KEYS);
 
-            st.setInt(1,c.getId_cliente());
+            st.setString(1,c.getCpf());
             st.setString(2,c.getNome());
             st.setString(3,c.getEmail());
             st.setString(4,c.getEndereco());
@@ -32,7 +32,7 @@ public class clienteDAO implements ClienteDao{
             if (linha > 0) {
                 ResultSet rs = st.getGeneratedKeys();
                 if(rs.next()){
-                    c.setId_cliente(rs.getInt(1));
+                    c.setCpf(rs.getString(1));
                 }
                 bancoDados.closeResultSet(rs);
             }
@@ -43,16 +43,17 @@ public class clienteDAO implements ClienteDao{
         }
     }
 
-    public void atualizarCliente(int id, cliente c){
+    public void atualizarCliente(String cpf, cliente c){
         PreparedStatement st = null;
 
         try {
-            st = conn.prepareStatement("UPDATE cliente SET nome = ?, email = ?, endereco = ?, telefone = ? WHERE id_cliente = ?");
-            st.setString(1,c.getNome());
-            st.setString(2, c.getEmail());
-            st.setString(3,c.getEndereco());
-            st.setString(4,c.getTelefone());
-            st.setInt(5, id);
+            st = conn.prepareStatement("UPDATE cliente SET cpf=?, nome = ?, email = ?, endereco = ?, telefone = ? WHERE cpf = ?");
+            st.setString(1,c.getCpf());
+            st.setString(2,c.getNome());
+            st.setString(3, c.getEmail());
+            st.setString(4,c.getEndereco());
+            st.setString(5,c.getTelefone());
+            st.setString(6, cpf);
             st.executeUpdate();
 
         } catch (SQLException e) {
@@ -64,18 +65,18 @@ public class clienteDAO implements ClienteDao{
 
     }
 
-    public cliente procurarCliente(int id){
+    public cliente procurarCliente(String cpf){
         PreparedStatement st = null;
         ResultSet rs = null;
 
         try {
-            st = conn.prepareStatement("select id_cliente, nome, email, endereco, telefone from cliente where id_cliente =?");
-            st.setInt(1,id);
+            st = conn.prepareStatement("select cpf, nome, email, endereco, telefone from cliente where cpf =?");
+            st.setString(1,cpf);
             rs = st.executeQuery();
 
             if (rs.next()){
                 cliente c = new cliente();
-                c.setId_cliente(rs.getInt("id_cliente"));
+                c.setCpf(rs.getString("cpf"));
                 c.setNome(rs.getString("nome"));
                 c.setEmail(rs.getString("email"));
                 c.setEndereco(rs.getString("endereco"));
@@ -98,12 +99,12 @@ public class clienteDAO implements ClienteDao{
     }
 
     @Override
-    public void removerCliente(int id) {
+    public void removerCliente(String cpf) {
         PreparedStatement st = null;
 
         try {
-            st = conn.prepareStatement("delete from cliente where id_cliente=?");
-            st.setInt(1,id);
+            st = conn.prepareStatement("delete from cliente where cpf=?");
+            st.setString(1,cpf);
             st.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);

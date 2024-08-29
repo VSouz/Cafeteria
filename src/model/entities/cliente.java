@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class cliente {
 
-    private int id_cliente;
+    private String cpf;
     private String nome;
     private String email;
     private String endereco;
@@ -15,12 +15,12 @@ public class cliente {
     }
 
 
-    public int getId_cliente() {
-        return id_cliente;
+    public String getCpf() {
+        return cpf;
     }
 
-    public void setId_cliente(int id_cliente) {
-        this.id_cliente = id_cliente;
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
     public String getNome() {
@@ -58,7 +58,7 @@ public class cliente {
     @Override
     public String toString() {
         return "cliente{" +
-                "id_cliente=" + id_cliente +
+                "cpf=" + cpf +
                 ", nome='" + nome + '\'' +
                 ", email='" + email + '\'' +
                 ", endereco='" + endereco + '\'' +
@@ -71,11 +71,11 @@ public class cliente {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         cliente cliente = (cliente) o;
-        return id_cliente == cliente.id_cliente && Objects.equals(nome, cliente.nome) && Objects.equals(email, cliente.email) && Objects.equals(endereco, cliente.endereco) && Objects.equals(telefone, cliente.telefone);
+        return cpf == cliente.cpf && Objects.equals(nome, cliente.nome) && Objects.equals(email, cliente.email) && Objects.equals(endereco, cliente.endereco) && Objects.equals(telefone, cliente.telefone);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id_cliente, nome, email, endereco, telefone);
+        return Objects.hash(cpf, nome, email, endereco, telefone);
     }
 }

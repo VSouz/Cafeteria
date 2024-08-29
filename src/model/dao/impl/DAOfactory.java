@@ -9,4 +9,6 @@ public class DAOfactory {
     }
 
     public static produtoDAO createProdutoDao(){return new produtoDAO(bancoDados.getConnection());}
+
+    public static funcionarioDAO createFuncionarioDao(){return new funcionarioDAO(bancoDados.getConnection());}
 }
