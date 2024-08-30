@@ -7,21 +7,9 @@ import model.entities.funcionario;
 import model.entities.produto;
 import model.dao.impl.clienteDAO;
 import java.util.Scanner;
-//import javafx.application.Application;
-//import javafx.fxml.FXMLLoader;
-//import javafx.scene.Parent;
-//import javafx.scene.Scene;
-//import javafx.stage.Stage;
-
+import javaFx.org.telaInicial.telaInicialApplication;
 public class Main {
 
-    //    @Override
-//    public void start(Stage primaryStage) throws Exception {
-//        Parent root = FXMLLoader.load(getClass().getResource("/resources/sample.fxml"));
-//        primaryStage.setTitle("Sample Application");
-//        primaryStage.setScene(new Scene(root));
-//        primaryStage.show();
-//    }
     public static void main(String[] args) {
 
         // PROCURAR POR ID
