@@ -1,0 +1,22 @@
+
+.button {
+    -fx-background-color: #fcf4e0;
+    -fx-text-fill: #4c3b28;
+    -fx-font-size: 16px;
+    -fx-padding: 10px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+
+.la {
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+}
+
+.telaInicial {
+    -fx-background-image: url("INICIAL.png");
+    -fx-background-color: #242452;
+    -fx-background-size: cover;
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+}

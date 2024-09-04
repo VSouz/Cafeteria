@@ -1,5 +1,6 @@
 package model;
 
+import javafx.scene.Scene;
 import model.dao.ClienteDao;
 import model.dao.impl.DAOfactory;
 import model.entities.cliente;
@@ -49,7 +50,9 @@ public class Main {
     public static void menu(){
         Scanner scanNum = new Scanner(System.in);
         Scanner scanSt = new Scanner(System.in);
+
         int op;
+
 
         do {
             System.out.println("escolha uma opção");

@@ -1,10 +1,11 @@
-module org.telaInicial {
+module cafeteria {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.sql;
 
-//    requires org.kordamp.bootstrapfx.core;
-
-    opens org.telaInicial.telaInicial to javafx.fxml;
-    exports org.telaInicial.telaInicial;
+    // Exporta pacotes para outros módulos
+    opens javaFx.org.telaInicial;
+    exports javaFx.org.telaInicial;
+    opens javaFx.org.loginCliente;
+    exports  javaFx.org.loginCliente;
 }
