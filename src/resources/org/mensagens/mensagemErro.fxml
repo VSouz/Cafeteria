@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" prefHeight="286.0" prefWidth="428.0" spacing="10" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaFx.org.geralController.geralController">
+   <ImageView fitHeight="129.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../../icons/erroIcon.png" />
+      </image>
+   </ImageView>
+    <Label fx:id="msgErro" alignment="CENTER" prefHeight="50.0" prefWidth="223.0" text="Ocorreu um erro!" textFill="#eb0c0c">
+      <font>
+         <Font name="System Bold" size="24.0" />
+      </font></Label>
+</VBox>
