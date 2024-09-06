@@ -59,6 +59,18 @@ public class geralController {
 
     }
 
+    public void trocarCadastroCliente(ActionEvent event){
+        try {
+            root = FXMLLoader.load(getClass().getResource("/resources/org/cadastroCliente/cadastroCliente-view.fxml"));
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public Stage newStage(String url) throws IOException {
         Stage stage1 = new Stage();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/resources/org"+url));

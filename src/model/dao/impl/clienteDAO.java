@@ -15,7 +15,7 @@ public class clienteDAO implements ClienteDao{
     }
 
     @Override
-    public void cadastrarCliente(cliente c) {
+    public cliente cadastrarCliente(cliente c) {
         PreparedStatement st = null;
         try {
             st = conn.prepareStatement("insert into"+
@@ -41,6 +41,7 @@ public class clienteDAO implements ClienteDao{
         }finally {
             bancoDados.closedStatement(st);
         }
+        return c;
     }
 
     public void atualizarCliente(String cpf, cliente c){

@@ -17,7 +17,7 @@
          </image>
       </ImageView>
       <Rectangle fx:id="retangulo" arcWidth="30" arcHeight="30"  fill="#4a3515" height="236.0" layoutX="513.0" layoutY="250.0" stroke="BLACK" strokeType="INSIDE" width="300.0" />
-      <Button fx:id="cadastrar" alignment="CENTER" layoutX="535.0" layoutY="420.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="120.0" text="Cadastrar-se">
+      <Button fx:id="cadastrar"  onAction="#onCadastrarClick" alignment="CENTER" layoutX="535.0" layoutY="420.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="120.0" text="Cadastrar-se">
          <font>
             <Font size="10.0" />
          </font>

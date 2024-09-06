@@ -51,5 +51,11 @@ public class loginClienteController {
            erro.trocarHomeCliente(event);
         }
     }
+    @FXML
+    protected void onCadastrarClick(ActionEvent event) throws IOException {
+
+        geralController novo = new geralController();
+        novo.trocarCadastroCliente(event);
+    }
 
 }

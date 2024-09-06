@@ -12,4 +12,6 @@ module cafeteria {
     exports javaFx.org.geralController;
     opens javaFx.org.homeCliente;
     exports  javaFx.org.homeCliente;
+    opens javaFx.org.cadastroCliente;
+    exports  javaFx.org.cadastroCliente;
 }
