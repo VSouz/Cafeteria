@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaFx.org.loginFuncionario.loginFuncionarioController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="236.0" layoutX="159.0" layoutY="79.0" stroke="BLACK" strokeType="INSIDE" width="300.0" />
+      <ImageView fitHeight="58.0" fitWidth="55.0" layoutX="275.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../icons/cIiente.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="183.0" layoutY="203.0" prefHeight="30.0" prefWidth="41.0" text="CPF" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <TextField fx:id="campo_cpf" layoutX="256.0" layoutY="206.0" />
+      <Button fx:id="cadastrar" layoutX="187.0" layoutY="272.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="92.0" text="CADASTRAR" />
+      <Button fx:id="entrar" layoutX="339.0" layoutY="271.0" mnemonicParsing="false" text="ENTRAR" />
+      <Button fx:id="voltar" layoutX="47.0" layoutY="49.0" mnemonicParsing="false" text="&lt;--" />
+   </children>
+</AnchorPane>
