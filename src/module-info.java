@@ -8,4 +8,10 @@ module cafeteria {
     exports javaFx.org.telaInicial;
     opens javaFx.org.loginCliente;
     exports  javaFx.org.loginCliente;
+    opens javaFx.org.geralController;
+    exports javaFx.org.geralController;
+    opens javaFx.org.homeCliente;
+    exports  javaFx.org.homeCliente;
+    opens javaFx.org.cadastroCliente;
+    exports  javaFx.org.cadastroCliente;
 }
