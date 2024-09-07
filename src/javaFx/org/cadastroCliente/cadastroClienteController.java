@@ -53,9 +53,14 @@ public class cadastroClienteController {
 
             controle.newStage("/mensagens/mensagemErro.fxml");
         }else{
-            System.out.println("cheguei aqui");
-            cliente c = DAOfactory.createClienteDao().cadastrarCliente(cliente);
-            controle.trocarLoginCliente(event);
+            cliente c =DAOfactory.createClienteDao().procurarCliente(cpf.getText());
+            if (c == null){
+                DAOfactory.createClienteDao().cadastrarCliente(cliente);
+                controle.trocarLoginCliente(event);
+            }else {
+                controle.newStage("/mensagens/mensagemErro.fxml");
+            }
+
         }
 
 

@@ -14,4 +14,10 @@ module cafeteria {
     exports  javaFx.org.homeCliente;
     opens javaFx.org.cadastroCliente;
     exports  javaFx.org.cadastroCliente;
+    opens javaFx.org.loginFuncionario;
+    exports  javaFx.org.loginFuncionario;
+    opens javaFx.org.homeFuncionario;
+    exports  javaFx.org.homeFuncionario;
+    opens javaFx.org.produto;
+    exports  javaFx.org.produto;
 }

@@ -18,13 +18,14 @@ public class produtoDAO implements ProdutoDao {
             PreparedStatement st = null;
         try {
             st = conn.prepareStatement("insert into"+
-                            " produto(id_produto,nome,preco,qtd_estoque) values(?,?,?,?)",
+                            " produto(id_produto,nome,preco,qtd_estoque,foto) values(?,?,?,?,?)",
                     Statement.RETURN_GENERATED_KEYS);
 
             st.setInt(1,p.getId_produto());
             st.setString(2,p.getNome());
             st.setDouble(3,p.getPreco());
             st.setInt(4,p.getQtd_estoque());
+            st.setBytes(5,p.getFoto());
 
             int linha = st.executeUpdate();
 
@@ -49,7 +50,7 @@ public class produtoDAO implements ProdutoDao {
         ResultSet rs = null;
 
         try {
-            st = conn.prepareStatement("select id_produto, nome, preco, qtd_estoque from produto where id_produto =?");
+            st = conn.prepareStatement("select id_produto, nome, preco, qtd_estoque,foto from produto where id_produto =?");
             st.setInt(1,id);
             rs = st.executeQuery();
 
@@ -59,6 +60,7 @@ public class produtoDAO implements ProdutoDao {
                 p.setNome(rs.getString("nome"));
                 p.setPreco(rs.getFloat("preco"));
                 p.setQtd_estoque(rs.getInt("qtd_estoque"));
+                p.setFoto(rs.getBytes("foto"));
                 return p;
             }
 

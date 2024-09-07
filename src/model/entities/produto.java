@@ -12,7 +12,7 @@ public class produto {
 
     private int qtd_estoque;
 
-    private Blob foto;
+    private byte[] foto;
 
     public int getId_produto() {
         return id_produto;
@@ -46,11 +46,11 @@ public class produto {
         this.qtd_estoque = qtd_estoque;
     }
 
-    public Blob getFoto() {
+    public byte[] getFoto() {
         return foto;
     }
 
-    public void setFoto(Blob foto) {
+    public void setFoto(byte[] foto) {
         this.foto = foto;
     }
 

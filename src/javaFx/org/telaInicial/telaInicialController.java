@@ -36,6 +36,8 @@ public class telaInicialController {
     }
     @FXML
     protected void onHelloFuncionarioButtonClick(ActionEvent event) {
-        welcomeText.setText("Welcome Funcionario!");
+
+        geralController a = new geralController();
+        a.trocarLoginFuncionario(event);
     }
 }

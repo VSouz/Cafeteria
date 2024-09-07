@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="626.0" prefWidth="1004.0" stylesheets="@../../styles.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaFx.org.produto.produtoController">
+   <children>
+      <ImageView fitHeight="642.0" fitWidth="1144.0" layoutX="-140.0" pickOnBounds="true" smooth="false">
+         <image>
+            <Image url="@../../telaSecundariaFuncionario.png" />
+         </image>
+      </ImageView>
+      <TabPane layoutX="-7.0" layoutY="-6.0" prefHeight="642.0" prefWidth="1011.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Cadastrar">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="662.0" prefWidth="1005.0">
+                     <children>
+                        <Rectangle fx:id="retangulo" arcHeight="30" arcWidth="30" fill="#fcf4e0" height="435.0" layoutX="336.0" layoutY="101.0" strokeType="INSIDE" width="377.0" />
+                        <VBox alignment="CENTER_LEFT" layoutX="358.0" layoutY="250.0" prefHeight="184.0" prefWidth="197.0" spacing="28">
+                           <children>
+                              <Label text="Nome">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Quantidade">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Preço">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <ImageView fitHeight="142.0" fitWidth="333.0" layoutX="358.0" layoutY="132.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../icons/fotoAdd.png" />
+                           </image>
+                        </ImageView>
+                        <VBox alignment="CENTER_RIGHT" layoutX="471.0" layoutY="262.0" prefHeight="160.0" prefWidth="220.0" spacing="20">
+                           <children>
+                              <TextField prefHeight="25.0" prefWidth="129.0" />
+                              <TextField />
+                              <TextField />
+                           </children>
+                        </VBox>
+                        <Button layoutX="474.0" layoutY="447.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="101.0" text="Salvar">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Pesquisar">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            </content>
+          </Tab>
+            <Tab text="Atualizar">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+               </content>
+            </Tab>
+            <Tab text="Remover">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
