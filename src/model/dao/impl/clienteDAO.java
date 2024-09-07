@@ -1,6 +1,7 @@
 package model.dao.impl;
 
 import bancoDados.bancoDados;
+import javaFx.org.geralController.geralController;
 import model.entities.cliente;
 import model.dao.ClienteDao;
 
