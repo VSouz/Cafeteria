@@ -127,11 +127,13 @@ public class produtoDAO implements ProdutoDao {
         PreparedStatement st = null;
 
         try {
-            st = conn.prepareStatement("UPDATE produto SET nome = ?, preco = ?, qtd_estoque = ? WHERE id_produto = ?");
+            st = conn.prepareStatement("UPDATE produto SET nome = ?, preco = ?, qtd_estoque = ?, foto = ? WHERE id_produto = ?");
             st.setString(1,p.getNome());
             st.setDouble(2, p.getPreco());
             st.setInt(3,p.getQtd_estoque());
-            st.setInt(4, id);
+            st.setBytes(4, p.getFoto());
+            st.setInt(5, id);
+
             st.executeUpdate();
 
         } catch (SQLException e) {

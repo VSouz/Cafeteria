@@ -72,7 +72,7 @@
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <Rectangle fx:id="retangulo1" arcHeight="30" arcWidth="30" fill="#fcf4e0" height="435.0" layoutX="317.0" layoutY="89.0" strokeType="INSIDE" width="377.0" />
-                        <Button fx:id="pesquisar" layoutX="567.0" layoutY="146.0" mnemonicParsing="false" onAction="#pesquisarId" prefHeight="43.0" prefWidth="103.0" text="Pesquisar">
+                        <Button fx:id="pesquisar" layoutX="567.0" layoutY="146.0" mnemonicParsing="false" onAction="#pesquisarPorNome" prefHeight="43.0" prefWidth="103.0" text="Pesquisar">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
@@ -89,7 +89,57 @@
           </Tab>
             <Tab text="Atualizar">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Rectangle fx:id="retangulo11" arcHeight="30" arcWidth="30" fill="#fcf4e0" height="466.0" layoutX="317.0" layoutY="89.0" strokeType="INSIDE" width="377.0" />
+                        <ImageView fx:id="fotoAtl" fitHeight="142.0" fitWidth="333.0" layoutX="339.0" layoutY="199.0" nodeOrientation="INHERIT" onMouseClicked="#onFotoAltClick" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../icons/fotoAdd.png" />
+                           </image>
+                        </ImageView>
+                        <Button fx:id="pesquisarAtl" layoutX="567.0" layoutY="146.0" mnemonicParsing="false" onAction="#atualizarProduto" prefHeight="43.0" prefWidth="103.0" text="Pesquisar">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Button>
+                        <TextField fx:id="buscaAtl" layoutX="342.0" layoutY="150.0" prefHeight="36.0" prefWidth="208.0" />
+                        <Label layoutX="342.0" layoutY="104.0" prefHeight="35.0" prefWidth="276.0" text="Pesquisar produto por id" textFill="#946a09">
+                           <font>
+                              <Font name="System Bold" size="17.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="salvarAtl" layoutX="455.0" layoutY="485.0" mnemonicParsing="false" onAction="#salvarAtl" prefHeight="57.0" prefWidth="101.0" text="Salvar">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Button>
+                        <VBox layoutX="348.0" layoutY="344.0" prefHeight="145.0" prefWidth="100.0" spacing="20">
+                           <children>
+                              <Label text="Nome">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Quantidade" >
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Preço">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="449.0" layoutY="346.0" prefHeight="139.0" prefWidth="215.0" spacing="10">
+                           <children>
+                              <TextField  fx:id="nomeAtl" prefHeight="25.0" prefWidth="216.0" />
+                              <TextField fx:id="qtdAtl" layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="216.0" />
+                              <TextField fx:id="precoAtl" layoutX="10.0" layoutY="35.0" prefHeight="25.0" prefWidth="216.0" />
+                           </children>
+                        </VBox>
+                     </children></AnchorPane>
                </content>
             </Tab>
             <Tab text="Remover">
