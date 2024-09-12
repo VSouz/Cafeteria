@@ -6,10 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
@@ -60,6 +57,14 @@ public class produtoController {
     @FXML
     private TextField buscaAtl;
 
+    @FXML
+    private TextField buscaRm;
+    @FXML
+    private Label resultadoRm;
+
+    geralController controle = new geralController();
+
+
 
     @FXML
     void onFotoClick() throws IOException {
@@ -91,7 +96,6 @@ public class produtoController {
             produto.setFoto(fileBytes);
         }
 
-        geralController controle = new geralController();
 
         if (nome.getText().isEmpty() || file == null || preco.getText().isEmpty() || qtd.getText().isEmpty()){
 
@@ -143,7 +147,7 @@ public class produtoController {
     }
 
     @FXML
-    protected void pesquisarPorNome(ActionEvent event) throws IOException {
+    protected void pesquisarPorNome() throws IOException {
 
         if (busca.getText().isEmpty()){
             initialize();
@@ -158,8 +162,8 @@ public class produtoController {
 
                 listaDeProdutos.setItems(lista);
             }else {
-                geralController erro = new geralController();
-                erro.newStage("/mensagens/mensagemErro.fxml");
+
+                controle.newStage("/mensagens/mensagemErro.fxml");
             }
         }
 
@@ -168,11 +172,11 @@ public class produtoController {
     @FXML
     protected void atualizarProduto() throws IOException {
 
-        geralController erro = new geralController();
+
 
         if (buscaAtl.getText().isEmpty()){
 
-            erro.newStage("/mensagens/mensagemErro.fxml");
+            controle.newStage("/mensagens/mensagemErro.fxml");
 
         }else{
             int id = Integer.parseInt(buscaAtl.getText());
@@ -188,7 +192,7 @@ public class produtoController {
                 precoAtl.setText(String.valueOf(p.getPreco()));
 
             }else {
-                erro.newStage("/mensagens/mensagemErro.fxml");
+                controle.newStage("/mensagens/mensagemErro.fxml");
             }
         }
     }
@@ -206,7 +210,6 @@ public class produtoController {
             produto.setFoto(fileBytes);
         }
 
-        geralController controle = new geralController();
 
         if (nomeAtl.getText().isEmpty() || fotoAtl == null || precoAtl.getText().isEmpty() || qtdAtl.getText().isEmpty()){
 
@@ -224,6 +227,30 @@ public class produtoController {
             controle.newStage("/mensagens/mensagemAccept.fxml");
         }
 
+    }
+
+    @FXML
+    protected void removerProduto(){
+
+        int id = Integer.parseInt(buscaRm.getText());
+
+        produto p = DAOfactory.createProdutoDao().procurarPorId(id);
+
+        resultadoRm.setText("id: " + p.getId_produto() + "Nome: " + p.getNome());
+
+
+
+    }
+
+    @FXML
+    protected  void confirmarRemover() throws IOException {
+        int id = Integer.parseInt(buscaRm.getText());
+
+        DAOfactory.createProdutoDao().removerProduto(id);
+
+        resultadoRm.setText(null);
+
+        controle.newStage("/mensagens/mensagemAccept.fxml");
     }
 
 
