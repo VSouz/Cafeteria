@@ -19,7 +19,7 @@
         </ImageView>
         <VBox fx:id="menu" alignment="CENTER" prefHeight="720.0" prefWidth="116.0" spacing="25">
             <children>
-                <Button mnemonicParsing="false">
+                <Button mnemonicParsing="false" onAction="#onCadastroFuncionarioClick">
                     <graphic>
                         <ImageView fitHeight="47.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -27,7 +27,7 @@
                             </image>
                         </ImageView>
                     </graphic></Button>
-                <Button mnemonicParsing="false">
+                <Button mnemonicParsing="false" onAction="#onPedidoClick">
                     <graphic>
                         <ImageView fitHeight="47.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -35,7 +35,7 @@
                             </image>
                         </ImageView>
                     </graphic></Button>
-            <Button mnemonicParsing="false"  onAction="#onProdutoClick">
+            <Button mnemonicParsing="false" onAction="#onProdutoClick">
                <graphic>
                   <ImageView fitHeight="47.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                      <image>

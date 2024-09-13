@@ -1,7 +1,9 @@
 package javaFx.org.homeFuncionario;
 
 import javaFx.org.geralController.geralController;
+import javaFx.org.pedido.pedidoApplication;
 import javaFx.org.produto.produtoApplication;
+import javaFx.org.cadastroFuncionario.cadastroFuncionarioApplication;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -26,6 +28,26 @@ public class homeFuncionarioController {
         try {
             p.start(stage);
         } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
+    protected void onPedidoClick(ActionEvent event){
+        pedidoApplication pa = new pedidoApplication();
+        try {
+            pa.start(stage);
+        } catch (IOException e){
+            throw new RuntimeException(e);
+        }
+
+    }
+    @FXML
+    protected void onCadastroFuncionarioClick(ActionEvent event){
+        cadastroFuncionarioApplication cf = new cadastroFuncionarioApplication();
+        try {
+            cf.start(stage);
+        }catch (IOException e){
             throw new RuntimeException(e);
         }
     }
