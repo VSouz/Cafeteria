@@ -1,18 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaFx.org.pedido.pedidoController">
+<AnchorPane prefHeight="626.0" prefWidth="1004.0" stylesheets="@../../styles.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaFx.org.pedido.pedidoController">
    <children>
-      <ListView fx:id="lista_pedidos" layoutX="29.0" layoutY="64.0" prefHeight="310.0" prefWidth="540.0" />
-      <Label layoutX="29.0" layoutY="14.0" text="PEDIDOS">
+      <ImageView fitHeight="642.0" fitWidth="1144.0" pickOnBounds="true" smooth="false">
+         <image>
+            <Image url="@../../telaSecundariaFuncionario.png" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="30" arcWidth="30" fill="#fcf4e0" height="575.0" layoutX="42.0" layoutY="31.0" strokeType="INSIDE" width="1060.0" />
+      <TableView fx:id="tabela_pedidos" layoutX="90.0" layoutY="120.0" prefHeight="357.0" prefWidth="964.0" />
+      <Label layoutX="90.0" layoutY="52.0" text="Pedidos">
          <font>
-            <Font size="36.0" />
+            <Font name="System Bold" size="36.0" />
          </font>
       </Label>
+      <Button layoutX="961.0" layoutY="510.0" mnemonicParsing="false" prefHeight="53.0" onAction="#onSalvarClick" prefWidth="93.0" text="Salvar" />
+      <Label fx:id="pedido" layoutX="90.0" layoutY="511.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="52.0" prefWidth="239.0" styleClass="label">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <ChoiceBox fx:id="statusEscolha" layoutX="341.0"  layoutY="511.0" prefHeight="53.0" prefWidth="150.0" />
    </children>
 </AnchorPane>

@@ -20,7 +20,7 @@ public class pedidoApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/resources/org/pedido/pedido-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         Stage stage = new Stage();
-        stage.initStyle(StageStyle.UNDECORATED);
+
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setTitle("Cafeteria.Java");
         stage.getIcons().add(new Image(getClass().getResourceAsStream("/resources/icons/iconLogo.png")));

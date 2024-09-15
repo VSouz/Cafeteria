@@ -5,10 +5,10 @@ import java.util.Date;
 public class pedido {
 
     private int id_pedido;
-    private cliente id_cliente;
+    private String cpf_cliente;
     private String status;
     private Date data;
-    private funcionario  id_funcionario;
+    private String  id_funcionario;
 
 
     public int getId_pedido() {
@@ -27,22 +27,21 @@ public class pedido {
         this.data = data;
     }
 
-    public cliente getId_cliente() {
-        return id_cliente;
+    public String getCpf_cliente() {
+        return cpf_cliente;
     }
 
-    public void setId_cliente(cliente id_cliente) {
-        this.id_cliente = id_cliente;
+    public void setCpf_cliente(String id_cliente) {
+        this.cpf_cliente = id_cliente;
     }
 
-    public funcionario getId_funcionario() {
+    public String getId_funcionario() {
         return id_funcionario;
     }
 
-    public void setId_funcionario(funcionario id_funcionario) {
+    public void setId_funcionario(String id_funcionario) {
         this.id_funcionario = id_funcionario;
     }
-
     public String getStatus() {
         return status;
     }
