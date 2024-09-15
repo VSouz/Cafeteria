@@ -20,7 +20,7 @@
             <Image url="@../../telaSecundariaFuncionario.png" />
          </image>
       </ImageView>
-      <TabPane prefHeight="642.0" prefWidth="1011.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane layoutX="-50.0" prefHeight="642.0" prefWidth="1011.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="Cadastrar">
                <content>
@@ -63,14 +63,15 @@
                         </VBox>
                         <VBox layoutX="429.0" layoutY="217.0" prefHeight="185.0" prefWidth="240.0" spacing="15">
                            <children>
-                              <TextField />
-                              <TextField />
-                              <TextField />
-                              <TextField />
-                              <TextField />
+                              <TextField fx:id="cpf" />
+                              <TextField fx:id="nome" />
+                              <TextField fx:id="cargo" />
+                              <TextField fx:id="email" />
+                              <TextField fx:id="telefone" />
                            </children>
                         </VBox>
-                        <Button layoutX="455.0" layoutY="437.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="101.0" text="Salvar!" />
+                        <Button fx:id="salvar" layoutX="455.0" layoutY="437.0" mnemonicParsing="false" onAction="#salvar" prefHeight="57.0" prefWidth="101.0" text="Salvar!" />
+                        <Button fx:id="limpar" layoutX="579.0" layoutY="445.0" mnemonicParsing="false" onAction="#limparCampos" text="LIMPAR" />
                      </children>
                   </AnchorPane>
                </content>
@@ -86,7 +87,7 @@
                            </font>
                         </Button>
                         <TextField fx:id="busca" layoutX="342.0" layoutY="150.0" prefHeight="36.0" prefWidth="208.0" />
-                        <ListView fx:id="listaDeProdutos" layoutX="342.0" layoutY="207.0" prefHeight="280.0" prefWidth="328.0" />
+                        <ListView fx:id="listaFuncio" layoutX="342.0" layoutY="207.0" prefHeight="280.0" prefWidth="328.0" />
                         <Label layoutX="342.0" layoutY="104.0" prefHeight="35.0" prefWidth="276.0" text="Pesquisar funcionario por Nome" textFill="#946a09">
                            <font>
                               <Font name="System Bold" size="17.0" />
@@ -112,7 +113,7 @@
                               <Font name="System Bold" size="17.0" />
                            </font>
                         </Label>
-                        <Button fx:id="salvarAtl" layoutX="455.0" layoutY="437.0" mnemonicParsing="false" onAction="#salvarAtl" prefHeight="57.0" prefWidth="101.0" text="Salvar">
+                        <Button fx:id="salvarAtl" layoutX="505.0" layoutY="440.0" mnemonicParsing="false" onAction="#salvarAtl" prefHeight="57.0" prefWidth="101.0" text="Salvar">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
@@ -143,12 +144,13 @@
                         </VBox>
                         <VBox layoutX="439.0" layoutY="227.0" prefHeight="185.0" prefWidth="232.0" spacing="15">
                            <children>
-                              <TextField />
-                              <TextField />
-                              <TextField />
-                              <TextField />
+                              <TextField fx:id="nomeAtl" />
+                              <TextField fx:id="cargoAtl" />
+                              <TextField fx:id="emailAtl" />
+                              <TextField fx:id="telefoneAtl" />
                            </children>
                         </VBox>
+                        <Button layoutX="393.0" layoutY="447.0" mnemonicParsing="false" onAction="#limparCampos" text="LIMPAR" />
                      </children>
                   </AnchorPane>
                </content>

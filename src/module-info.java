@@ -2,6 +2,7 @@ module cafeteria {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.sql;
+    requires jdk.incubator.vector;
 
     opens model.entities to javafx.base;
     opens javaFx.org.pedidoCliente to javafx.fxml;

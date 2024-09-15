@@ -1,6 +1,8 @@
 package model.dao.impl;
 
 import bancoDados.bancoDados;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import model.dao.FuncionarioDao;
 import model.entities.funcionario;
 import model.entities.produto;
@@ -102,5 +104,36 @@ public class funcionarioDAO implements FuncionarioDao {
             bancoDados.closedStatement(st);
         }
         return null;
+    }
+
+    @Override
+    public ObservableList<funcionario> listarTodosFuncionarios() {
+        ObservableList<funcionario> listaFuncionarios = FXCollections.observableArrayList();
+
+        PreparedStatement st = null;
+        ResultSet rs = null;
+
+        try{
+            st = conn.prepareStatement("Select cpf, nome, cargo, email, telefone from funcionario");
+            rs = st.executeQuery();
+
+            if (rs.next()){
+                funcionario f = new funcionario();
+                f.setNome(rs.getString("nome"));
+                f.setCpf(rs.getString("cpf"));
+                f.setCargo(rs.getString("cargo"));
+                f.setEmail(rs.getString("email"));
+                f.setTelefone(rs.getString("telefone"));
+                listaFuncionarios.add(f);
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            bancoDados.closeResultSet(rs);
+            bancoDados.closedStatement(st);
+        }
+
+        return listaFuncionarios;
     }
 }
