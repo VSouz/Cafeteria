@@ -61,3 +61,23 @@
 .retangulo{
     -fx-background-color: #2d0909;
 }
+
+#pedido {
+    -fx-background-color: #d0beac;
+    -fx-text-fill: #4c3b28;
+    -fx-padding: 10 20;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-border-color: transparent;
+    -fx-effect: dropshadow( one-pass-box , rgba(0,0,0,0.2) , 5, 0.0 , 0 , 1);
+    -fx-cursor: hand;
+    -fx-transition: background-color 0.3s ease;
+}
+
+.choice-box{
+    -fx-background-color: #d0beac;
+    -fx-background-radius: 10;
+    -fx-padding: 5;
+    -fx-font-size: 14px;
+    -fx-text-fill: #40ad21;
+}
