@@ -1,13 +1,16 @@
 package model.entities;
 
-import java.sql.Blob;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.Property;
+
 import java.util.Objects;
 
 public class produto {
 
+
     private int id_produto;
     private String nome;
-
+    private BooleanProperty selected;
     private float preco;
 
     private int qtd_estoque;
@@ -75,5 +78,9 @@ public class produto {
                 ", preco=" + preco +
                 ", qtd_estoque='" + qtd_estoque + '\'' +
                 '}';
+    }
+
+    public Property<Boolean> selectedProperty() {
+    return selected;
     }
 }

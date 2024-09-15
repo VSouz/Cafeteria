@@ -3,6 +3,10 @@ module cafeteria {
     requires javafx.fxml;
     requires java.sql;
 
+    opens model.entities to javafx.base;
+    opens javaFx.org.pedidoCliente to javafx.fxml;
+
+
     // Exporta pacotes para outros módulos
     opens javaFx.org.telaInicial;
     exports javaFx.org.telaInicial;
@@ -24,5 +28,6 @@ module cafeteria {
     exports javaFx.org.pedido;
     opens javaFx.org.cadastroFuncionario;
     exports javaFx.org.cadastroFuncionario;
+    exports javaFx.org.pedidoCliente;
 
 }
