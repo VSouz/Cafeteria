@@ -10,9 +10,8 @@ public class produto {
 
     private int id_produto;
     private String nome;
-    private BooleanProperty selected;
+    private BooleanProperty selected ;
     private float preco;
-
     private int qtd_estoque;
 
     private byte[] foto;
@@ -78,6 +77,13 @@ public class produto {
                 ", preco=" + preco +
                 ", qtd_estoque='" + qtd_estoque + '\'' +
                 '}';
+    }
+    public boolean isSelected(){
+        return selected.get();
+    }
+
+    public void setSelected(boolean selected){
+        this.selected.set(selected);
     }
 
     public Property<Boolean> selectedProperty() {

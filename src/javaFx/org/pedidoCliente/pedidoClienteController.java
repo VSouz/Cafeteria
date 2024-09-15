@@ -4,6 +4,7 @@ import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -11,11 +12,14 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Callback;
+import model.entities.pedidoDetalhe;
 import model.entities.produto;
 import model.dao.impl.DAOfactory;
 
 import java.net.URL;
+import java.sql.PreparedStatement;
 import java.util.ResourceBundle;
+
 
 public class pedidoClienteController implements Initializable {
     @FXML
@@ -29,17 +33,18 @@ public class pedidoClienteController implements Initializable {
     @FXML
     private TableColumn<produto, Byte[]> foto;
     @FXML
-    private ListView<produto> carrinho;
+    private ListView<String> carrinho;
     @FXML
     private Button confirmar;
     @FXML
     private Button cancelar;
+    @FXML
+    private TextField teste;
 
-    private produto p = new produto();
 
-
-    private ObservableList<produto> carrinhoItens = FXCollections.observableArrayList();
-
+    private ObservableList<produto> produtos = FXCollections.observableArrayList();
+    private ObservableList<String> carrinhoItens = FXCollections.observableArrayList();
+    private ObservableList<produto> carrinhoProdutos = FXCollections.observableArrayList();
 
 
     public void initialize(URL location, ResourceBundle resources) {
@@ -49,35 +54,47 @@ public class pedidoClienteController implements Initializable {
         nome.setCellValueFactory(new PropertyValueFactory<>("nome"));
         preco.setCellValueFactory(new PropertyValueFactory<>("preco"));
 
+        selectCol.setCellFactory(CheckBoxTableCell.forTableColumn(param -> {
+            produto prod = tabela_principal.getItems().get(param);
+            SimpleBooleanProperty booleanProperty = new SimpleBooleanProperty(false);
+
+            booleanProperty.addListener((obs, wasSelect, isSelected) -> {
+                if (isSelected){
+                    carrinhoProdutos.add(prod);
+                    carrinhoItens.add(prod.getNome());
+                }else{
+                    carrinhoItens.remove(prod.getNome());
+                    carrinhoProdutos.remove(prod);
+                }carrinho.setItems(carrinhoItens);
+            });
+            return booleanProperty;
+        }));
+
         ObservableList<produto> lista = FXCollections.observableArrayList(DAOfactory.createProdutoDao().buscarTodosOsProdutos());
         tabela_principal.setItems(lista);
 
-//        selectCol.setCellValueFactory(new PropertyValueFactory<>("selected"));
-//        selectCol.setCellFactory(col -> new CheckBoxTableCell<produto, Boolean>() {
-//            @Override
-//            public void updateItem(Boolean item, boolean empty) {
-//                super.updateItem(item, empty);
-//                if (empty || item == null) {
-//                    setGraphic(null);
-//                } else {
-//                    CheckBox checkBox = new CheckBox();
-//                    checkBox.selectedProperty().bindBidirectional(getTableRow().getItem().selectedProperty());
-//                    checkBox.selectedProperty().addListener((obs, wasSelected, isSelected) -> {
-//                        produto p = getTableRow().getItem();
-//                        if (isSelected) {
-//                            if (!carrinhoItens.contains(p)) {
-//                                carrinhoItens.add(p);
-//                            }
-//                        } else {
-//                            carrinhoItens.remove(p);
-//                        }
-//                        carrinho.setItems(carrinhoItens);
-//                    });
-//                    setGraphic(checkBox);
-//                }
-//            }
-//        });
-                }
+
+    }
+
+    public void confirmarPedido(ActionEvent event){
+
+        if(carrinhoProdutos.size() > 0){
+            salvarCarrinho(carrinhoProdutos);
+        } else {
+            System.out.println("carro vazio ");
+        }
+    }
+    private void salvarCarrinho(ObservableList<produto> itensCarrinho){
+
+        //int idPedido = DAOfactory.createPedidoDaoJDBC().fazerPedido();
+
+        for (produto p : itensCarrinho){
+            pedidoDetalhe pd = new pedidoDetalhe();
+            pd.setId_produto(p.getId_produto());
+
+            DAOfactory.createDetalhePedidoJDBC().adicionarDpedido(pd);
+        }
+    }
             }
 
 

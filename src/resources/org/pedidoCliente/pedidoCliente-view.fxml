@@ -5,6 +5,7 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -30,7 +31,8 @@
             <Font size="21.0" />
          </font>
       </Label>
-      <Button fx:id="confirmar" layoutX="518.0" layoutY="416.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="88.0" text="CONFIRMAR" />
+      <Button fx:id="confirmar" layoutX="518.0" layoutY="416.0" mnemonicParsing="false" onAction="#confirmarPedido" prefHeight="25.0" prefWidth="88.0" text="CONFIRMAR" />
       <Button fx:id="cancelar" layoutX="421.0" layoutY="416.0" mnemonicParsing="false" text="CANCELAR" />
+      <TextField fx:id="teste" layoutX="33.0" layoutY="404.0" />
    </children>
 </AnchorPane>

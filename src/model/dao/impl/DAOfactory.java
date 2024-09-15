@@ -13,4 +13,6 @@ public class DAOfactory {
     public static funcionarioDAO createFuncionarioDao(){return new funcionarioDAO(bancoDados.getConnection());}
 
     public static pedidoDaoJDBC createPedidoDaoJDBC(){return new pedidoDaoJDBC(bancoDados.getConnection());}
+
+    public static detalhePedidoDaoJDBC createDetalhePedidoJDBC(){return new detalhePedidoDaoJDBC(bancoDados.getConnection());}
 }
