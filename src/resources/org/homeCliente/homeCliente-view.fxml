@@ -19,7 +19,7 @@
       </ImageView>
       <VBox fx:id="menu" alignment="CENTER" prefHeight="720.0" prefWidth="116.0" spacing="25">
          <children>
-            <Button mnemonicParsing="false">
+            <Button mnemonicParsing="false" onAction="#onCriarPedidoClick">
                <graphic>
                   <ImageView fitHeight="47.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                      <image>

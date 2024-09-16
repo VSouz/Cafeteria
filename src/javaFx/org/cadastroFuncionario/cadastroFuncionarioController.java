@@ -101,7 +101,9 @@ public class cadastroFuncionarioController {
             }
         });
     }
-    public void pesquisarPorNome(ActionEvent event) throws IOException{
+
+    @FXML
+    protected void pesquisarPorNome() throws IOException{
         if (busca.getText().isEmpty()){
             initialize();
         }else {

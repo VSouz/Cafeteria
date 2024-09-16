@@ -117,7 +117,7 @@ public class funcionarioDAO implements FuncionarioDao {
             st = conn.prepareStatement("Select cpf, nome, cargo, email, telefone from funcionario");
             rs = st.executeQuery();
 
-            if (rs.next()){
+            while (rs.next()){
                 funcionario f = new funcionario();
                 f.setNome(rs.getString("nome"));
                 f.setCpf(rs.getString("cpf"));
