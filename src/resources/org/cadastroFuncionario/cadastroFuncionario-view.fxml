@@ -101,7 +101,7 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Rectangle fx:id="retangulo11" arcHeight="30" arcWidth="30" fill="#fcf4e0" height="435.0" layoutX="317.0" layoutY="89.0" strokeType="INSIDE" width="377.0" />
+                        <Rectangle fx:id="retangulo11" arcHeight="30" arcWidth="30" fill="#fcf4e0" height="435.0" layoutX="317.0" layoutY="82.0" strokeType="INSIDE" width="377.0" />
                         <Button fx:id="pesquisarAtl" layoutX="567.0" layoutY="146.0" mnemonicParsing="false" onAction="#atualizarFuncionario" prefHeight="43.0" prefWidth="103.0" text="Pesquisar">
                            <font>
                               <Font name="System Bold" size="12.0" />
@@ -150,7 +150,7 @@
                               <TextField fx:id="telefoneAtl" />
                            </children>
                         </VBox>
-                        <Button layoutX="393.0" layoutY="447.0" mnemonicParsing="false" onAction="#limparCampos" text="LIMPAR" />
+                        <Button fx:id="limpar" layoutX="393.0" layoutY="447.0" mnemonicParsing="false" onAction="#limparCampos" text="LIMPAR" />
                      </children>
                   </AnchorPane>
                </content>

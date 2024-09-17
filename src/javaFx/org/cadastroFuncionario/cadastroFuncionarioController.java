@@ -6,10 +6,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import model.dao.impl.DAOfactory;
 import model.entities.funcionario;
@@ -48,6 +45,10 @@ public class cadastroFuncionarioController {
     @FXML
     private Button limpar;
     @FXML
+    private TextField buscaRm;
+    @FXML
+    private Label resultadoRm;
+    @FXML
     private ListView<funcionario> listaFuncio;
 
     geralController controle = new geralController();
@@ -74,7 +75,7 @@ public class cadastroFuncionarioController {
         }
     }
 
-    public void limparCampos(ActionEvent event){
+    public void limparCampos(){
         nome.setText(null);
         cargo.setText(null);
         email.setText(null);
@@ -130,7 +131,6 @@ public class cadastroFuncionarioController {
             f = DAOfactory.createFuncionarioDao().procurarFuncionario(id);
             if (f != null){
                 nomeAtl.setText(f.getNome());
-                cpfAtl.setText(f.getCpf());
                 cargoAtl.setText(f.getCargo());
                 emailAtl.setText(f.getEmail());
                 telefoneAtl.setText(f.getTelefone());
@@ -140,12 +140,34 @@ public class cadastroFuncionarioController {
         }
     }
 
-    public void salvarAtl(ActionEvent event) {
+    public void salvarAtl(ActionEvent event) throws IOException {
+        String chave = buscaAtl.getText();
+        funcionario fu = new funcionario();
+
+        if (nomeAtl.getText().isEmpty() || cargoAtl.getText().isEmpty() || emailAtl.getText().isEmpty() || telefoneAtl.getText().isEmpty()){
+            controle.newStage("/mensagens/mensagemError.fxml");
+        } else {
+            fu.setNome(nomeAtl.getText());
+            fu.setCargo(cargoAtl.getText());
+            fu.setEmail(emailAtl.getText());
+            fu.setTelefone(telefoneAtl.getText());
+
+            DAOfactory.createFuncionarioDao().atualizarFuncionario(chave, fu);
+            limparCampos();
+            controle.newStage("/mensagens/mensagemAccept.fxml");
+        }
     }
 
     public void removerFuncionario(ActionEvent event) {
+        String chave = buscaRm.getText();
+        funcionario f = DAOfactory.createFuncionarioDao().procurarFuncionario(chave);
+        resultadoRm.setText("Nome: "+f.getNome()+"Cargo: "+f.getCargo()+"Email: "+f.getEmail());
+
     }
 
-    public void confirmarRemover(ActionEvent event) {
+    public void confirmarRemover(ActionEvent event) throws IOException{
+        String chave = buscaRm.getText();
+        DAOfactory.createFuncionarioDao().removerFuncionario(chave);
+        controle.newStage("/mensagens/mensagemAccept.fxml");
     }
 }
