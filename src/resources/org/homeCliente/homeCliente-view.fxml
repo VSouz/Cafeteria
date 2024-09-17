@@ -27,7 +27,7 @@
                      </image>
                   </ImageView>
                </graphic></Button>
-            <Button mnemonicParsing="false" prefHeight="80.0" prefWidth="78.0">
+            <Button onAction="#onHistoricoClienteClick" mnemonicParsing="false" prefHeight="80.0" prefWidth="78.0">
                <graphic>
                   <ImageView fitHeight="47.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                      <image>

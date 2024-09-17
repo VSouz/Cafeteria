@@ -1,6 +1,7 @@
 package javaFx.org.homeCliente;
 
 import javaFx.org.geralController.geralController;
+import javaFx.org.historicoCliente.historicoClienteApplication;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
@@ -15,6 +16,12 @@ public class homeClienteController {
     @FXML
     protected void onCriarPedidoClick(ActionEvent event) throws IOException {
         pedidoClienteApplication a = new pedidoClienteApplication();
+        a.start(new Stage());
+    }
+
+    @FXML
+    protected void onHistoricoClienteClick(ActionEvent event) throws IOException {
+        historicoClienteApplication a = new historicoClienteApplication();
         a.start(new Stage());
     }
 

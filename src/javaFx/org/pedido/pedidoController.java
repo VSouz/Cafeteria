@@ -89,7 +89,7 @@ public class pedidoController {
 
         System.out.println(p.getId_pedido());
         System.out.println(p.getCpf_cliente());
-        System.out.println(p.getId_funcionario());
+        System.out.println(loginFuncionarioController.getInstance().getNome());
         System.out.println(p.getData());
         System.out.println(p.getStatus());
 

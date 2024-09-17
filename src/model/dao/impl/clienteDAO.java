@@ -2,8 +2,11 @@ package model.dao.impl;
 
 import bancoDados.bancoDados;
 import javaFx.org.geralController.geralController;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import model.entities.cliente;
 import model.dao.ClienteDao;
+import model.entities.pedido;
 
 import java.sql.*;
 
@@ -95,6 +98,39 @@ public class clienteDAO implements ClienteDao{
 
         return null;
     }
+
+    @Override
+    public ObservableList<pedido> historicoPedidos(String cpf) {
+        ObservableList<pedido> listaDePedidos = FXCollections.observableArrayList();
+
+        PreparedStatement st = null;
+        ResultSet rs = null;
+
+        try {
+            st = conn.prepareStatement("select id_pedido, cpf_cliente, status, data, id_funcionario from pedido where cpf_cliente = ?",  Statement.RETURN_GENERATED_KEYS);
+            st.setString(1,cpf);
+            rs = st.executeQuery();
+
+            while (rs.next()){
+                pedido p = new pedido();
+                p.setId_pedido(rs.getInt("id_pedido"));
+                p.setCpf_cliente(rs.getString("cpf_cliente"));
+                p.setData(rs.getDate("data"));
+                p.setStatus(rs.getString("status"));
+                p.setId_funcionario(rs.getString("id_funcionario"));
+                listaDePedidos.add(p);
+
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }finally{
+            bancoDados.closeResultSet(rs);
+            bancoDados.closedStatement(st);
+        }
+        return listaDePedidos;
+    }
+
     @Override
     public void fazerPedido(cliente c) {
 

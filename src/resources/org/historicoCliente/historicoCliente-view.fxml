@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="605.0" prefWidth="1096.0" stylesheets="@../../styles.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaFx.org.historicoCliente.historicoClienteController">
+   <children>
+      <ImageView fitHeight="608.0" fitWidth="1099.0" pickOnBounds="true" smooth="false">
+         <image>
+            <Image url="@../../telaSecundariaCliente.png" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="30" arcWidth="30" fill="#fcf4e0" height="466.0" layoutX="384.0" layoutY="71.0" strokeType="INSIDE" width="377.0" />
+      <TableView fx:id="tabela_pedidos" layoutX="414.0" layoutY="143.0" prefHeight="357.0" prefWidth="318.0" />
+      <Label fx:id="titulo" layoutX="409.0" layoutY="89.0" prefHeight="48.0" prefWidth="327.0" text="Histórico de pedidos de ">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

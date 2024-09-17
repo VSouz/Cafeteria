@@ -5,7 +5,7 @@ module cafeteria {
     requires jdk.incubator.vector;
 
     opens model.entities to javafx.base;
-    opens javaFx.org.pedidoCliente to javafx.fxml;
+
 
 
     // Exporta pacotes para outros módulos
@@ -29,6 +29,9 @@ module cafeteria {
     exports javaFx.org.pedido;
     opens javaFx.org.cadastroFuncionario;
     exports javaFx.org.cadastroFuncionario;
+    opens javaFx.org.pedidoCliente;
     exports javaFx.org.pedidoCliente;
+    opens javaFx.org.historicoCliente;
+    exports javaFx.org.historicoCliente;
 
 }
