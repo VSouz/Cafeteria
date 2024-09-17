@@ -1,5 +1,6 @@
 package javaFx.org.pedido;
 
+import javaFx.org.loginFuncionario.loginFuncionarioController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -36,23 +37,23 @@ public class pedidoController {
         TableColumn<pedido, String >colIdCliente = new TableColumn<>("Cliente");
         colIdCliente.setCellValueFactory(new PropertyValueFactory<>("cpf_cliente"));
 
-        // Coluna ID do Funcionário
+
         TableColumn<pedido, String> colIdFuncionario = new TableColumn<>("Funcionário");
         colIdFuncionario.setCellValueFactory(new PropertyValueFactory<>("id_funcionario"));
 
-        // Coluna Status (usando ChoiceBox dentro da tabela)
+
         TableColumn<pedido, String> colStatus = new TableColumn<>("Status");
         colStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
 
-        // Definindo a ChoiceBox para a coluna Status
+
         ObservableList<String> statusOptions = FXCollections.observableArrayList("Pendente", "Processando", "Concluido", "Cancelado");
         colStatus.setCellFactory(ComboBoxTableCell.forTableColumn(statusOptions));
 
-        // Coluna Data do Pedido
+
         TableColumn<pedido, Date> colDataPedido = new TableColumn<>("Data Pedido");
         colDataPedido.setCellValueFactory(new PropertyValueFactory<>("data"));
 
-        // Adicionando as colunas na TableView
+
         tabela_pedidos.getColumns().addAll(colIdPedido, colIdCliente, colIdFuncionario, colStatus, colDataPedido);
 
 
@@ -80,7 +81,7 @@ public class pedidoController {
         p.setStatus(statusEscolha.getValue().toString());
         p.setData(pedidoSelecionado.getData());
         p.setCpf_cliente(pedidoSelecionado.getCpf_cliente());
-        p.setId_funcionario(pedidoSelecionado.getId_funcionario());
+        p.setId_funcionario(loginFuncionarioController.getInstance().getCpf());
 
         DAOfactory.createPedidoDaoJDBC().alterarStatusPedido(p);
         tabela_pedidos.setItems(DAOfactory.createPedidoDaoJDBC().buscarTodosOsPedidos());

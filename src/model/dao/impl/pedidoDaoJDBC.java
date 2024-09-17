@@ -117,9 +117,10 @@ public class pedidoDaoJDBC implements PedidoDAO {
         PreparedStatement st = null;
 
         try {
-            st = conn.prepareStatement("UPDATE pedido SET status = ? WHERE id_pedido = ?");
+            st = conn.prepareStatement("UPDATE pedido SET status = ?, id_funcionario = ? WHERE id_pedido = ?");
             st.setString(1,p.getStatus());
-            st.setDouble(2, p.getId_pedido());
+            st.setString(2, p.getId_funcionario());
+            st.setDouble(3, p.getId_pedido());
 
             st.executeUpdate();
 

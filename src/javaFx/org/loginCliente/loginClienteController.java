@@ -28,6 +28,12 @@ public class loginClienteController {
     @FXML
     private Button voltar;
 
+    private static cliente instance;
+
+    public static cliente getInstance(){
+        return instance;
+    }
+
     @FXML
     protected void onVoltarClick(ActionEvent event){
         geralController a = new geralController();
@@ -38,7 +44,7 @@ public class loginClienteController {
     protected void onEntrarClick(ActionEvent event) throws IOException {
         cliente cliente = new cliente();
         cliente.setCpf(cpf.getText());
-        System.out.println(cliente.getCpf());
+
 
         cliente c = DAOfactory.createClienteDao().procurarCliente(cpf.getText());
         geralController erro = new geralController();
@@ -48,6 +54,8 @@ public class loginClienteController {
             erro.newStage("/mensagens/mensagemErro.fxml");
 
         }else{
+
+            instance = c;
            erro.trocarHomeCliente(event);
         }
     }

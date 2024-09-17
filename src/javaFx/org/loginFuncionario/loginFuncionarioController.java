@@ -1,6 +1,7 @@
 package javaFx.org.loginFuncionario;
 
 import javaFx.org.geralController.geralController;
+import javaFx.org.homeFuncionario.homeFuncionarioController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -18,7 +19,12 @@ public class loginFuncionarioController {
     @FXML
     private TextField cpf;
 
+    private static funcionario instance;
 
+    public static funcionario getInstance() {
+
+        return instance;
+    }
     @FXML
     protected void onVoltarClick(ActionEvent event){
         geralController tela = new geralController();
@@ -36,6 +42,7 @@ public class loginFuncionarioController {
         if (f == null){
             controle.newStage("/mensagens/mensagemErro.fxml");
         }else{
+            instance = f;
             controle.trocarHomeFuncionario(event);
         }
     }

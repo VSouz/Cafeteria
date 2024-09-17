@@ -1,6 +1,8 @@
 package javaFx.org.homeFuncionario;
 
 import javaFx.org.geralController.geralController;
+import javaFx.org.loginFuncionario.loginFuncionarioApplication;
+import javaFx.org.loginFuncionario.loginFuncionarioController;
 import javaFx.org.pedido.pedidoApplication;
 import javaFx.org.produto.produtoApplication;
 import javaFx.org.cadastroFuncionario.cadastroFuncionarioApplication;
@@ -8,6 +10,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.stage.Stage;
+import model.entities.funcionario;
 
 import java.io.IOException;
 
@@ -28,6 +31,7 @@ public class homeFuncionarioController {
         try {
             p.start(stage);
         } catch (IOException e) {
+
             throw new RuntimeException(e);
         }
     }
