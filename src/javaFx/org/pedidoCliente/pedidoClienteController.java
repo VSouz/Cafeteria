@@ -46,10 +46,6 @@ public class pedidoClienteController {
     public void initialize (){
 
 
-
-        TableColumn<produto, byte[]> colIdFoto = new TableColumn<>("Foto");
-        colIdFoto.setCellValueFactory(new PropertyValueFactory<>("foto"));
-
         carrinho.setItems(itensCarrinho);
         carrinho.setCellFactory(param -> new ListCell<carrinho>() {
             @Override
@@ -63,6 +59,10 @@ public class pedidoClienteController {
                 }
             }
         });
+
+
+        TableColumn<produto, byte[]> colIdFoto = new TableColumn<>("Foto");
+        colIdFoto.setCellValueFactory(new PropertyValueFactory<>("foto"));
         colIdFoto.setCellFactory(column -> new TableCell<produto, byte[]>() {
             private final ImageView imageView = new ImageView();
 
@@ -87,15 +87,15 @@ public class pedidoClienteController {
         });
 
 
-
-        TableColumn<produto, String >colIdNome = new TableColumn<>("Nome");
+        TableColumn<produto, String >colIdNome = new TableColumn<>("Produto");
         colIdNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
 
 
-        TableColumn<produto, String> colIdPreco = new TableColumn<>("Preço");
+        TableColumn<produto, String> colIdPreco = new TableColumn<>("Preço R$");
         colIdPreco.setCellValueFactory(new PropertyValueFactory<>("preco"));
 
-
+        colIdNome.setStyle("-fx-alignment: CENTER; -fx-font-weight: bold;");
+        colIdPreco.setStyle("-fx-alignment: CENTER; -fx-font-weight: bold;");
 
         listaDeProdutos.getColumns().addAll(colIdFoto,colIdNome,colIdPreco);
 

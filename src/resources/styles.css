@@ -81,3 +81,13 @@
     -fx-font-size: 14px;
     -fx-text-fill: #40ad21;
 }
+
+
+.label {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+.image-view {
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.25) , 10,0,0,1 );
+}
