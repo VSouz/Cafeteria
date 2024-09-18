@@ -19,16 +19,17 @@ public class pedidoDaoJDBC implements PedidoDAO {
     public pedidoDaoJDBC(Connection conn) { this.conn = conn;}
 
     @Override
-    public pedido fazerPedido(pedido p, cliente c, funcionario f) { //gambiarra temporaria
+    public pedido fazerPedido(pedido p) { //gambiarra temporaria
         PreparedStatement st = null;
 
         try {
-            st = conn.prepareStatement("insert into pedido(cpf_cliente, status, data, id_funcionario)" +
-                    " values(?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
-            st.setString(1,c.getCpf());
-            st.setString(2,p.getStatus());
-            st.setDate(3,new Date(p.getData().getTime()));
-            st.setString(4,f.getCpf());
+            st = conn.prepareStatement("insert into pedido(id_pedido,cpf_cliente, status, data, id_funcionario)" +
+                    " values(?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
+            st.setInt(1,p.getId_pedido());
+            st.setString(2,p.getCpf_cliente());
+            st.setString(3,"Pendente");
+            st.setDate(4,new java.sql.Date(new java.util.Date().getTime()));
+            st.setString(5,"123");
             int linha = st.executeUpdate();
             if (linha > 0){
                 ResultSet rs = st.getGeneratedKeys();

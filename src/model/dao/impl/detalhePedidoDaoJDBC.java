@@ -16,14 +16,15 @@ public class detalhePedidoDaoJDBC implements DetalhePedidoDAO {
     private Connection conn;
     public detalhePedidoDaoJDBC(Connection conn){this.conn = conn;}
     @Override
-    public void adicionarDpedido(pedidoDetalhe pd) {
+    public void adicionarDetalhePedido(pedidoDetalhe pd) {
         PreparedStatement st = null;
         ResultSet rs = null;
         try {
-            st = conn.prepareStatement("Insert into detalhe_pedido(id_pedido, preco_unitario, quantidade) values (?,?,?)", PreparedStatement.RETURN_GENERATED_KEYS);
-            st.setInt(1,pd.getId_produto());
+            st = conn.prepareStatement("Insert into detalhe_pedido(id_pedido, preco_unitario, quantidade, id_produto) values (?,?,?,?)", PreparedStatement.RETURN_GENERATED_KEYS);
+            st.setInt(1,pd.getId_pedido());
             st.setDouble(2,pd.getPreco_unitario());
             st.setInt(3,pd.getQuantidade());
+            st.setInt(4,pd.getId_produto());
             st.execute();
             rs = st.getGeneratedKeys();
             if (rs.next()){

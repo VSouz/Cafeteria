@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface PedidoDAO {
 
-    pedido fazerPedido(pedido p, cliente c, funcionario f);
+    pedido fazerPedido(pedido p);
     void cancelarPedido(int id_p);
     void alterarPedido(int id_p, pedido p);
     List<pedido> listarPedidos();

@@ -2,7 +2,10 @@ package model.entities;
 
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.Property;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
+import java.io.ByteArrayInputStream;
 import java.util.Objects;
 
 public class produto {
@@ -88,5 +91,14 @@ public class produto {
 
     public Property<Boolean> selectedProperty() {
     return selected;
+    }
+
+    public ImageView getImagemView() {
+        ByteArrayInputStream bis = new ByteArrayInputStream(foto);
+        Image img = new Image(bis);
+        ImageView imageView = new ImageView(img);
+        imageView.setFitHeight(50);  // Ajusta o tamanho da imagem
+        imageView.setFitWidth(50);
+        return imageView;
     }
 }

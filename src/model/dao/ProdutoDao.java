@@ -1,5 +1,6 @@
 package model.dao;
 import javafx.collections.ObservableList;
+import javafx.scene.image.ImageView;
 import model.entities.produto;
 public interface ProdutoDao {
     void cadastrarProduto(produto p);
@@ -9,4 +10,5 @@ public interface ProdutoDao {
     void atualizarProduto(int id, produto p);
 
     ObservableList<produto> buscarTodosOsProdutos();
+
 }
