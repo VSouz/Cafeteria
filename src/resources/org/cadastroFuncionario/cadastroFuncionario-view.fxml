@@ -26,7 +26,7 @@
                <content>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <Rectangle arcHeight="30" arcWidth="30" fill="#fcf4e0" height="435.0" layoutX="317.0" layoutY="89.0" stroke="BLACK" strokeType="INSIDE" width="377.0" />
+                        <Rectangle arcHeight="30" arcWidth="30" fill="#fcf4e0" height="435.0" layoutX="317.0" layoutY="82.0" stroke="BLACK" strokeType="INSIDE" width="377.0" />
                         <ImageView fitHeight="62.0" fitWidth="62.0" layoutX="478.0" layoutY="123.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../icons/addFuncionario_2.png" />
@@ -70,8 +70,7 @@
                               <TextField fx:id="telefone" />
                            </children>
                         </VBox>
-                        <Button fx:id="salvar" layoutX="455.0" layoutY="437.0" mnemonicParsing="false" onAction="#salvar" prefHeight="57.0" prefWidth="101.0" text="Salvar!" />
-                        <Button fx:id="limpar" layoutX="579.0" layoutY="445.0" mnemonicParsing="false" onAction="#limparCampos" text="LIMPAR" />
+                        <Button fx:id="salvar" layoutX="455.0" layoutY="436.0" mnemonicParsing="false" onAction="#salvar" prefHeight="57.0" prefWidth="101.0" text="Salvar!" />
                      </children>
                   </AnchorPane>
                </content>
@@ -80,7 +79,7 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Rectangle fx:id="retangulo1" arcHeight="30" arcWidth="30" fill="#fcf4e0" height="435.0" layoutX="317.0" layoutY="89.0" strokeType="INSIDE" width="377.0" />
+                        <Rectangle fx:id="retangulo1" arcHeight="30" arcWidth="30" fill="#fcf4e0" height="435.0" layoutX="317.0" layoutY="82.0" strokeType="INSIDE" width="377.0" />
                         <Button fx:id="pesquisar" layoutX="567.0" layoutY="146.0" mnemonicParsing="false" onAction="#pesquisarPorNome" prefHeight="43.0" prefWidth="103.0" text="Pesquisar">
                            <font>
                               <Font name="System Bold" size="12.0" />
@@ -113,7 +112,7 @@
                               <Font name="System Bold" size="17.0" />
                            </font>
                         </Label>
-                        <Button fx:id="salvarAtl" layoutX="505.0" layoutY="440.0" mnemonicParsing="false" onAction="#salvarAtl" prefHeight="57.0" prefWidth="101.0" text="Salvar">
+                        <Button fx:id="salvarAtl" layoutX="455.0" layoutY="428.0" mnemonicParsing="false" onAction="#salvarAtl" prefHeight="57.0" prefWidth="101.0" text="Salvar!">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
@@ -150,7 +149,6 @@
                               <TextField fx:id="telefoneAtl" />
                            </children>
                         </VBox>
-                        <Button fx:id="limpar" layoutX="393.0" layoutY="447.0" mnemonicParsing="false" onAction="#limparCampos" text="LIMPAR" />
                      </children>
                   </AnchorPane>
                </content>

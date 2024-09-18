@@ -116,15 +116,18 @@ public class produtoController {
     }
 
     private void limparCampos() {
-        nome.setText(null);
-        preco.setText(null);
-        qtd.setText(null);
+        nome.setText("");
+        preco.setText("");
+        qtd.setText("");
         Image img = new Image(getClass().getResource("/resources/icons/fotoAdd.png").toString());
         foto.setImage(img);
-        nomeAtl.setText(null);
-        precoAtl.setText(null);
-        qtdAtl.setText(null);
+        nomeAtl.setText("");
+        precoAtl.setText("");
+        qtdAtl.setText("");
         fotoAtl.setImage(img);
+        resultadoRm.setText("");
+        buscaRm.setText("");
+        buscaAtl.setText("");
     }
 
 

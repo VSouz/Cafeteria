@@ -26,12 +26,9 @@ public class cadastroFuncionarioController {
     private TextField email;
     @FXML
     private TextField telefone;
-    @FXML
-    private Button salvar;
+
     @FXML
     private TextField nomeAtl;
-    @FXML
-    private TextField cpfAtl;
     @FXML
     private TextField cargoAtl;
     @FXML
@@ -42,8 +39,6 @@ public class cadastroFuncionarioController {
     private TextField busca;
     @FXML
     private TextField buscaAtl;
-    @FXML
-    private Button limpar;
     @FXML
     private TextField buscaRm;
     @FXML
@@ -62,30 +57,33 @@ public class cadastroFuncionarioController {
         func.setEmail(email.getText());
         func.setTelefone(telefone.getText());
         if (nome.getText().isEmpty() || cpf.getText().isEmpty() || cargo.getText().isEmpty() || email.getText().isEmpty() || telefone.getText().isEmpty()){
-            controle.newStage("/mensagens/mensagemError.fxml");
+            controle.newStage("/mensagens/mensagemErro.fxml");
         }else{
             funcionario f = DAOfactory.createFuncionarioDao().procurarFuncionario(cpf.getText());
             if (f == null){
                 DAOfactory.createFuncionarioDao().cadastrarFuncionario(func);
                 controle.newStage("/mensagens/mensagemAccept.fxml");
+                limparCampos();
             }else {
-                controle.newStage("/mensagens/mensagemError.fxml");
+                controle.newStage("/mensagens/mensagemErro.fxml");
 
             }
         }
     }
 
     public void limparCampos(){
-        nome.setText(null);
-        cargo.setText(null);
-        email.setText(null);
-        cpf.setText(null);
-        telefone.setText(null);
-        nomeAtl.setText(null);
-        cargoAtl.setText(null);
-        cpfAtl.setText(null);
-        telefoneAtl.setText(null);
-        emailAtl.setText(null);
+        nome.setText("");
+        cargo.setText("");
+        email.setText("");
+        cpf.setText("");
+        telefone.setText("");
+        buscaAtl.setText("");
+        nomeAtl.setText("");
+        cargoAtl.setText("");
+        telefoneAtl.setText("");
+        emailAtl.setText("");
+        resultadoRm.setText("");
+        buscaRm.setText("");
     }
     public void initialize() {
         listaFuncio.setItems(DAOfactory.createFuncionarioDao().listarTodosFuncionarios());
@@ -124,7 +122,7 @@ public class cadastroFuncionarioController {
 
     public void atualizarFuncionario(ActionEvent event) throws IOException {
         if (buscaAtl.getText().isEmpty()){
-            controle.newStage("/mensagens/mensagemError.fxml");
+            controle.newStage("/mensagens/mensagemErro.fxml");
         }else {
             String id = buscaAtl.getText();
             funcionario f;
@@ -135,7 +133,7 @@ public class cadastroFuncionarioController {
                 emailAtl.setText(f.getEmail());
                 telefoneAtl.setText(f.getTelefone());
             } else {
-                controle.newStage("/mensagens/mensagemError.fxml");
+                controle.newStage("/mensagens/mensagemErro.fxml");
             }
         }
     }
@@ -145,7 +143,7 @@ public class cadastroFuncionarioController {
         funcionario fu = new funcionario();
 
         if (nomeAtl.getText().isEmpty() || cargoAtl.getText().isEmpty() || emailAtl.getText().isEmpty() || telefoneAtl.getText().isEmpty()){
-            controle.newStage("/mensagens/mensagemError.fxml");
+            controle.newStage("/mensagens/mensagemErro.fxml");
         } else {
             fu.setNome(nomeAtl.getText());
             fu.setCargo(cargoAtl.getText());
@@ -169,5 +167,6 @@ public class cadastroFuncionarioController {
         String chave = buscaRm.getText();
         DAOfactory.createFuncionarioDao().removerFuncionario(chave);
         controle.newStage("/mensagens/mensagemAccept.fxml");
+        limparCampos();
     }
 }

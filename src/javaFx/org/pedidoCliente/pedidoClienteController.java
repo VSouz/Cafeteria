@@ -1,5 +1,7 @@
 package javaFx.org.pedidoCliente;
 
+import javaFx.org.geralController.geralController;
+import javaFx.org.homeCliente.homeClienteController;
 import javaFx.org.loginCliente.loginClienteController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -9,6 +11,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 import model.entities.pedido;
 import model.entities.pedidoDetalhe;
 import model.entities.produto;
@@ -16,6 +19,7 @@ import model.entities.carrinho;
 import model.dao.impl.DAOfactory;
 
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 
 
 public class pedidoClienteController {
@@ -33,6 +37,8 @@ public class pedidoClienteController {
     private ListView<carrinho> carrinho;
     @FXML
     private Label total;
+
+    private geralController controle = new geralController();
 
 
     private ObservableList<carrinho> itensCarrinho = FXCollections.observableArrayList();
@@ -153,7 +159,7 @@ public class pedidoClienteController {
     }
 
     @FXML
-    public void onFinalizarPedidoClick(){
+    public void onFinalizarPedidoClick() throws IOException {
 
         pedidoDetalhe p = new pedidoDetalhe();
         pedido pedido = new pedido();
@@ -171,6 +177,15 @@ public class pedidoClienteController {
             DAOfactory.createDetalhePedidoJDBC().adicionarDetalhePedido(p);
         }
 
+        controle.newStage("/mensagens/mensagemAccept.fxml");
+        limparCarrinho();
+    }
 
+    public void limparCarrinho() {
+
+        itensCarrinho.clear();
+
+        produto.setText("");
+        spinner.getValueFactory().setValue(0);
     }
 }

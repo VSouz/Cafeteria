@@ -17,12 +17,12 @@ import model.entities.pedido;
 
 public class homeClienteController {
 
-    private static pedido instance;
 
     @FXML
     protected void onCriarPedidoClick(ActionEvent event) throws IOException {
         pedidoClienteApplication a = new pedidoClienteApplication();
         a.start(new Stage());
+
     }
 
     @FXML
@@ -36,9 +36,5 @@ public class homeClienteController {
 
         geralController a = new geralController();
         a.trocarLoginCliente(event);
-    }
-    public static pedido getInstance() {
-
-        return instance;
     }
 }
